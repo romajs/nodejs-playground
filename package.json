@@ -1,0 +1,36 @@
+{
+  "name": "nodejs-playground",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Romualdo Santos",
+  "license": "MIT",
+  "scripts": {
+    "lint:watch": "npm run lint -- --watch",
+    "lint": "esw **/*.js --color --fix"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "eslint": "^7.7.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-watch": "^7.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.13"
+  },
+  "husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+			"pre-commit": "lint-staged",
+			"pre-push": "npm run test"
+		}
+	},
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "npm run lint"
+    ]
+  }
+}
