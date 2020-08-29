@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    script: 'mainThread.js',
+    script: `${__dirname}/mainThread.js`,
     instances: 'max',
     exec_mode: 'cluster',
   }],
