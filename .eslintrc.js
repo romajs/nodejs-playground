@@ -3,6 +3,9 @@ module.exports = {
     es6: true,
   },
   extends: 'standard',
+  ignorePatterns: [
+    'node_modules/**/*.js',
+  ],
   plugins: [
     'require-sort',
   ],
