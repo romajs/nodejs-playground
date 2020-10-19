@@ -1,9 +1,8 @@
-import { Model, snakeCaseMappers } from 'objection'
-
+import BaseModel from './BaseModel';
 import Invoice from './Invoice'
+import { Model } from 'objection'
 
-export default class Portfolio extends Model {
-  id?: Number;
+export default class Portfolio extends BaseModel {
   name?: String;
 
   constructor(name?: String) {
@@ -14,8 +13,6 @@ export default class Portfolio extends Model {
   static get tableName() {
     return 'portfolios';
   }
-
-  static columnNameMappers = snakeCaseMappers();
 
   static get jsonSchema() {
     return {

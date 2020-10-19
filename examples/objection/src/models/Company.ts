@@ -1,9 +1,8 @@
-import { Model, snakeCaseMappers } from 'objection'
+import BaseModel from './BaseModel';
+import { Model } from 'objection'
+import Portfolio from './Portfolio';
 
-import Portfolio from './Portfolio'
-
-export default class Company extends Model {
-  id?: Number;
+export default class Company extends BaseModel {
   name?: String;
   portfolioId?: Number;
 
@@ -16,8 +15,6 @@ export default class Company extends Model {
   static get tableName() {
     return 'companies';
   }
-
-  static columnNameMappers = snakeCaseMappers();
 
   static get jsonSchema() {
     return {

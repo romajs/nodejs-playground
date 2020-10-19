@@ -1,7 +1,6 @@
-import { Model, snakeCaseMappers } from 'objection'
+import BaseModel from './BaseModel';
 
-export default class Invoice extends Model {
-  id?: BigInteger;
+export default class Invoice extends BaseModel {
   date?: Date;
   dateDue?: Date;
   amount?: Number;
@@ -13,8 +12,6 @@ export default class Invoice extends Model {
   static get tableName() {
     return 'invoices';
   }
-
-  static columnNameMappers = snakeCaseMappers();
 
   static get jsonSchema() {
     return {
