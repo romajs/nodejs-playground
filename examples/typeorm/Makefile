@@ -10,17 +10,8 @@ run:
 install:
 	npm install
 
-build:
-	tsc --outDir build ./index.ts
-
 run-migration:
-	knex --knexfile ./knexfile.ts migrate:latest
+	ts-node ./node_modules/typeorm/cli.js migration:run
 
 revert-migration:
-	knex --knexfile ./knexfile.ts migrate:rollback
-
-seed-run:
-	knex --knexfile ./knexfile.ts seed:run
-
-clear:
-	rm -rf build
+	ts-node ./node_modules/typeorm/cli.js migration:revert

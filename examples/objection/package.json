@@ -1,12 +1,12 @@
 {
-  "name": "demo-objection",
+  "name": "@romajs/demo-objection",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "romajs",
-  "license": "MIT",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "apollo-server-koa": "^2.18.2",
     "dotenv": "^8.2.0",

@@ -5,6 +5,6 @@ services:
       ports:
         - "5432:5432"
       environment:
-        - POSTGRES_PASSWORD=yHbT6i3FUvA
+        - POSTGRES_PASSWORD=chang123
         - POSTGRES_USER=ching
-        - POSTGRES_DB=nodexed
+        - POSTGRES_DB=playground
