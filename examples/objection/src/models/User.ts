@@ -16,6 +16,12 @@ export default class User extends BaseModel {
     return 'users';
   }
 
+  static get jsonSchema() {
+    return {
+      // TODO:
+    };
+  }
+
   static get relationMappings() {
     return {
       restaurant: {

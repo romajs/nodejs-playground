@@ -16,6 +16,16 @@ export default class Restaurant extends BaseModel {
   static get tableName() {
     return 'restaurant';
   }
-}
 
-module.exports = Restaurant
+  static get jsonSchema() {
+    return {
+      // TODO:
+    };
+  }
+
+  static get relationMappings() {
+    return {
+      // TODO:
+    };
+  }
+}
