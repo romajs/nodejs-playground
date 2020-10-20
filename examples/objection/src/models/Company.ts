@@ -35,7 +35,7 @@ export default class Company extends BaseModel {
         modelClass: Portfolio,
         join: {
           from: 'companies.portfolioId',
-          to: 'portfolio.id'
+          to: 'portfolios.id'
         }
       }
     };

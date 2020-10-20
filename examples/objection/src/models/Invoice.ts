@@ -19,9 +19,9 @@ export default class Invoice extends BaseModel {
       required: ['date', 'date_due', 'amount', 'paid', 'invoiceNo', 'paymentReceiptId', 'portfolioId'],
       properties: {
         id: { type: 'integer' },
-        date: { type: 'timestamp' },
-        date_due: { type: 'date' },
-        amount: { type: 'float' },
+        date: { type: 'string', format: 'date-time' },
+        date_due: { type: 'string', format: 'date-time' },
+        amount: { type: 'number' },
         paid: { type: 'boolean' },
         invoiceNo: { type: 'integer' },
         paymentReceiptId: { type: 'integer' },
