@@ -1,14 +1,28 @@
-import Company from './models/Company';
-import { knex } from './db'
+import Portfolio from "./models/Portfolio";
+import graphqlHTTP from 'koa-graphql';
+import koa from 'koa';
+import koaBody from 'koa-bodyparser';
+import koaRouter from 'koa-router';
 
-async function main() {
-  const companies = await Company.query()
-  console.log({ companies })
-}
+const graphQlBuilder = require('objection-graphql').builder;
 
-main()
-  .then(() => knex.destroy())
-  .catch(err => {
-    console.error(err);
-    return knex.destroy();
-  });
+const graphQlSchema = graphQlBuilder()
+  .allModels([Portfolio])
+  .build();
+
+const app = new koa();
+const router = new koaRouter();
+const PORT = 3000;
+
+app.use(koaBody());
+
+router.post('/graphql', graphqlHTTP({ schema: graphQlSchema, graphiql: true }));
+router.get('/graphql', graphqlHTTP({ schema: graphQlSchema, graphiql: true }));
+router.get('/health', (ctx: any) => {
+  ctx.status = 200
+  ctx.body = { health: 'ok' }
+});
+
+app.use(router.routes());
+app.use(router.allowedMethods());
+app.listen(PORT)
