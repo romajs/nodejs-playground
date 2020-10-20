@@ -4,8 +4,6 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-console.log(__dirname, __filename)
-
 export default {
   client: 'pg',
   connection: {

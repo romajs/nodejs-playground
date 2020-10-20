@@ -25,16 +25,16 @@ export default class Portfolio extends BaseModel {
     };
   }
 
-  static get relationMappings() {
-    return {
-      invoice: {
-        relation: Model.BelongsToOneRelation,
-        modelClass: Invoice,
-        join: {
-          from: 'portfolios.invoiceId',
-          to: 'invoice.id'
-        }
-      }
-    };
-  }
+  // static get relationMappings() {
+  //   return {
+  //     invoice: {
+  //       relation: Model.BelongsToOneRelation,
+  //       modelClass: Invoice,
+  //       join: {
+  //         from: 'portfolios.invoiceId',
+  //         to: 'invoice.id'
+  //       }
+  //     }
+  //   };
+  // }
 }
