@@ -3,12 +3,8 @@ module.exports = {
     es6: true,
   },
   extends: 'standard',
-  ignorePatterns: [
-    'node_modules/**/*.js',
-  ],
-  plugins: [
-    'require-sort',
-  ],
+  ignorePatterns: ['node_modules/**/*.js'],
+  plugins: ['require-sort'],
   rules: {
     'comma-dangle': [
       'error',
@@ -22,15 +18,15 @@ module.exports = {
     ],
     'no-console': 'warn',
     'no-unused-vars': 'warn',
-    semi: [
+    semi: ['error', 'always'],
+    'require-sort/require-sort': [
       'error',
-      'always',
+      {
+        ignoreCase: false,
+        ignoreDeclarationSort: false,
+        ignorePropertySort: false,
+        propertySyntaxSortOrder: ['none', 'multiple', 'single'],
+      },
     ],
-    'require-sort/require-sort': ['error', {
-      ignoreCase: false,
-      ignoreDeclarationSort: false,
-      ignorePropertySort: false,
-      propertySyntaxSortOrder: ['none', 'multiple', 'single'],
-    }],
   },
 };
