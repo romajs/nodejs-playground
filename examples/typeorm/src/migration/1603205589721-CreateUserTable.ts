@@ -16,14 +16,16 @@ const ID_COLUMN = new TableColumn({
 
 const CREATED_AT_COLUMN = new TableColumn({
   name: 'created_at',
-  type: 'date',
+  type: 'timestamp',
   isNullable: false,
+  default: 'CURRENT_TIMESTAMP',
 });
 
 const UPDATED_AT_COLUMN = new TableColumn({
   name: 'updated_at',
-  type: 'date',
+  type: 'timestamp',
   isNullable: false,
+  default: 'CURRENT_TIMESTAMP',
 });
 
 const BASE_COLUMNS = [ID_COLUMN, CREATED_AT_COLUMN, UPDATED_AT_COLUMN];

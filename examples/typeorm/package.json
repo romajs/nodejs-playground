@@ -9,12 +9,13 @@
    "author": "",
    "license": "ISC",
    "dependencies": {
+      "body-parser": "^1.18.1",
+      "express": "^4.15.4",
+      "mysql": "^2.14.1",
       "pg": "^7.3.0",
       "reflect-metadata": "^0.1.10",
       "typeorm": "0.2.28",
-      "mysql": "^2.14.1",
-      "express": "^4.15.4",
-      "body-parser": "^1.18.1"
+      "typeorm-naming-strategies": "^2.0.0"
    },
    "devDependencies": {
       "@types/node": "^8.0.29",
