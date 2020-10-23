@@ -1,52 +1,39 @@
 import 'reflect-metadata';
 
-import * as bodyParser from 'body-parser';
-
 import { Connection, createConnection, getConnectionOptions } from 'typeorm';
-import { Request, Response } from 'express';
 
-import { Routes } from './routes';
+import { ApolloServer } from 'apollo-server-koa';
+import GraphQLDatabaseLoader from '@mando75/typeorm-graphql-loader';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { User } from './entity/User';
-import express from 'express';
+import koa from 'koa';
+import koaBody from 'koa-bodyparser';
+import koaRouter from 'koa-router';
 
-const startServer = () => {
-  // create express app
-  const app = express();
-  app.use(bodyParser.json());
+const startServer = (connection: Connection) => {
+  const app = new koa();
+  const router = new koaRouter();
 
-  // register express routes from defined application routes
-  Routes.forEach((route) => {
-    (app as any)[route.method](
-      route.route,
-      (req: Request, res: Response, next: Function) => {
-        const result = new (route.controller as any)()[route.action](
-          req,
-          res,
-          next
-        );
-        if (result instanceof Promise) {
-          result.then((result) =>
-            result !== null && result !== undefined
-              ? res.send(result)
-              : undefined
-          );
-        } else if (result !== null && result !== undefined) {
-          res.json(result);
-        }
-      }
-    );
+  app.use(koaBody());
+
+  router.get('/health', (ctx: any) => {
+    ctx.status = 200;
+    ctx.body = { health: 'ok' };
   });
 
-  // setup express app here
-  // ...
+  app.use(router.routes());
+  app.use(router.allowedMethods());
 
-  // start express server
-  app.listen(3000);
+  const apollo = new ApolloServer({
+    schema: '', // TODO:
+    context: {
+      loader: new GraphQLDatabaseLoader(connection, {}),
+    },
+  });
 
-  console.log(
-    'Express server has started on port 3000. Open http://localhost:3000/users to see results'
-  );
+  apollo.applyMiddleware({ app });
+
+  app.listen(process.env.HTTP_PORT || 3000);
 };
 
 const seed = async (connection) => {
@@ -64,12 +51,21 @@ const seed = async (connection) => {
   );
 };
 
+const apolloServer = new ApolloServer({
+  schema,
+  context: {
+    loader: new GraphQLDatabaseLoader(connection, {
+      /** additional options if needed**/
+    }),
+  },
+});
+
 const main = async (): Promise<Connection> => {
   const connectionOptions = Object.assign(await getConnectionOptions(), {
     namingStrategy: new SnakeNamingStrategy(),
   });
   const connection: Connection = await createConnection(connectionOptions);
-  await startServer();
+  await startServer(connection);
   await seed(connection);
   return connection;
 };

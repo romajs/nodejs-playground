@@ -1,12 +1,12 @@
-import { ApolloServer } from 'apollo-server-koa'
+import { ApolloServer } from 'apollo-server-koa';
 import { Model } from 'objection';
 import { buildSchema } from './schema';
-import { knex } from "./db";
+import { knex } from './db';
 import koa from 'koa';
 import koaBody from 'koa-bodyparser';
 import koaRouter from 'koa-router';
 
-Model.bind(knex) // FIXME:
+Model.bind(knex); // FIXME:
 
 const app = new koa();
 const router = new koaRouter();
@@ -21,8 +21,8 @@ router.get('/health', (ctx: any) => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const apollo = new ApolloServer({ schema: buildSchema() })
+const apollo = new ApolloServer({ schema: buildSchema() });
 
 apollo.applyMiddleware({ app });
 
-app.listen(process.env.HTTP_PORT || 3000)
+app.listen(process.env.HTTP_PORT || 3000);

@@ -9,8 +9,11 @@
    "author": "",
    "license": "ISC",
    "dependencies": {
-      "body-parser": "^1.18.1",
-      "express": "^4.15.4",
+      "@mando75/typeorm-graphql-loader": "^1.6.0",
+      "apollo-server-koa": "^2.18.2",
+      "koa": "^2.13.0",
+      "koa-bodyparser": "^4.3.0",
+      "koa-router": "^9.4.0",
       "mysql": "^2.14.1",
       "pg": "^7.3.0",
       "reflect-metadata": "^0.1.10",
