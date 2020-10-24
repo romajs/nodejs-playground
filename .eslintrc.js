@@ -19,14 +19,14 @@ module.exports = {
     'no-console': 'warn',
     'no-unused-vars': 'warn',
     semi: ['error', 'always'],
-    'require-sort/require-sort': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: false,
-        ignorePropertySort: false,
-        propertySyntaxSortOrder: ['none', 'multiple', 'single'],
-      },
-    ],
+    // 'require-sort/require-sort': [
+    //   'error',
+    //   {
+    //     ignoreCase: true,
+    //     ignoreDeclarationSort: false,
+    //     ignorePropertySort: false,
+    //     propertySyntaxSortOrder: ['none', 'multiple', 'single'],
+    //   },
+    // ],
   },
 };

@@ -1,5 +1,5 @@
 {
-  "name": "2romajs/graphql-express",
+  "name": "@romajs/graphql-express",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@graphql-tools/load-files": "^6.2.4",
+    "@graphql-tools/merge": "^6.2.5",
+    "@graphql-tools/schema": "^7.0.0",
     "express": "^4.17.1",
     "express-graphql": "^0.11.0",
     "graphql": "^15.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }
